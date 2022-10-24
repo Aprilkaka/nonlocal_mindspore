@@ -137,7 +137,11 @@ bash eval_standalone.sh [PROJECT_PATH] [DATA_PATH]
 .
 │  infer.py                                     // infer script
 │  README.md                                    // descriptions about Nonlocal
-│  train.py                                     // training scrip
+│  train.py                                     // training script
+└─scripts
+    | eval_standalone.sh                        //eval standalone script
+    | train_distribute.sh                       //train distribute script
+    | train_standalone.sh                       //train standalone script
 └─src
     ├─config
     │      nonlocal.yaml                        // Nonlocal parameter configuration
@@ -251,11 +255,10 @@ train:
     pre_trained: True
     pretrained_model: "./ms_nonlocal_dot_kinetics400_finetune.ckpt"
     ckpt_path: "./output/"
-    epochs: 100
+    epochs: 5
     save_checkpoint_epochs: 5
-    save_checkpoint_steps: 1875
+    save_checkpoint_steps: 4975
     keep_checkpoint_max: 10
-    run_distribute: True
 
 eval:
     pretrained_model: "./nonlocal-1_4975.ckpt"
