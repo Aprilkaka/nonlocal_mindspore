@@ -392,12 +392,13 @@ table
 {
     margin: auto;
 }
-</style>
+
 | <sub>type</sub> | <sub>input frames</sub> | <sub>non-local?</sub> | <sub>top1</sub> | <sub>top5</sub> | <sub>model</sub> |
 | ------------- | ------------- | ------------- | ------------- |------------- | ------------- |
 | <sub>i3d_nlnet_origin_caffe </sub> | 32 | Yes | 74.90 | 91.60 | [`link`](https://dl.fbaipublicfiles.com/video-nonlocal/i3d_nonlocal_32x2_IN_pretrain_400k.pkl)  |
 | <sub>i3d_nlnet_pytorch</sub> | 32 | Yes | 73.92 | 91.59 | [`link`](https://download.openmmlab.com/mmaction/recognition/i3d/i3d_nl_dot_product_r50_32x2x1_100e_kinetics400_rgb/i3d_nl_dot_product_r50_32x2x1_100e_kinetics400_rgb_20200814-7c30d5bb.pth) |
 | <sub>i3d_nlnet_mindspore</sub> | 32 | Yes | 72.48| 90.72 | [`link`](https://zjuteducn-my.sharepoint.com/:u:/g/personal/201906010313_zjut_edu_cn/Ec-B_Hr00QRAs49Vd7Qg4PkBslya1SjAola4hg64tpI6Vg?e=YNm0Ig) |
+</style>
 
 Here is the accuracy of the model from source paper.
 <div align=center>
