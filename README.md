@@ -387,6 +387,12 @@ eval: 19877/19877
 ```
 ## [Benchmark](#contents)
 Kinetics400 contains ∼246k training videos and 20k validation videos. It is a classification task involving 400 human action categories. We train the model on the training set and test on the validation set. Under the same setting conditions, we compared the accuracy of the models under the three frameworks.
+<style>
+table
+{
+    margin: auto;
+}
+</style>
 | <sub>type</sub> | <sub>input frames</sub> | <sub>non-local?</sub> | <sub>top1</sub> | <sub>top5</sub> | <sub>model</sub> |
 | ------------- | ------------- | ------------- | ------------- |------------- | ------------- |
 | <sub>i3d_nlnet_origin_caffe </sub> | 32 | Yes | 74.90 | 91.60 | [`link`](https://dl.fbaipublicfiles.com/video-nonlocal/i3d_nonlocal_32x2_IN_pretrain_400k.pkl)  |
