@@ -14,6 +14,8 @@
     - [Script Parameters](#script-parameters)
   - [Training Process](#training-process)
   - [Evaluation Process](#evaluation-process)
+  - [Benchmark](#benchmark)
+  - [Visualization result](#Visualization-result)
   - [Citation](#citation)
 
 
@@ -33,18 +35,23 @@ A non-local operation is a flexible building block and can be easily used togeth
 
 Table 1 baseline_ResNet50_C2D</div>
 Table 1 shows our C2D baseline under a ResNet-50 backbone.In this repositories, we use the Inflated 3D ConvNet(I3D) under a ResNet-50 backbone. One can turn the C2D model in Table 1into a 3D convolutional counterpart by “inflating” the kernels. For example, a 2D k×k kernel can be inflated as a 3D t×k×k kernel that spans t frames. And we add 5 blocks (3 to res4 and 2 to res3, to every other residual block). For more information, please read the [paper](./src/example/1711.07971v1.pdf).
-## [Dataset](#contents)
+## [Benchmark on Dataset](#contents)
 
 Dataset used: [Kinetics400](https://www.deepmind.com/open-source/kinetics)
 
 - Description: Kinetics-400 is a commonly used dataset for benchmarks in the video field. For details, please refer to its official website [Kinetics](https://www.deepmind.com/open-source/kinetics). For the download method, please refer to the official address [ActivityNet](https://github.com/activitynet/ActivityNet/tree/master/Crawler/Kinetics), and use the download script provided by it to download the dataset.
 
-- Dataset size：
+- Dataset size:
     |category | Number of data  | 
     | :------: | :----------: | 
     |Training set | 238797 |  
     |Validation set | 19877 | 
 Because of the expirations of some YouTube links, the sizes of kinetics dataset copies may be different.
+
+Dataset used in the paper [Non-local Neural Networks](https://arxiv.org/abs/1711.07971):
+
+Kinetics contains ∼246k training videos and 20k validation videos. It is a classification task involving 400 human action categories. They train all models on the training set and test on the validation set.
+
 ```text
 The directory structure of Kinetic-400 dataset looks like:
 
@@ -82,7 +89,7 @@ To run the python scripts in the repository, you need to prepare the environment
     - Prepare hardware environment with GPU(Nvidia).
 - Framework
     - [MindSpore](https://www.mindspore.cn/install/en)
-- For more information, please check the resources below：
+- For more information, please check the resources below:
     - [MindSpore Tutorials](https://www.mindspore.cn/tutorials/en/master/index.html)
     - [MindSpore Python API](https://www.mindspore.cn/docs/en/master/index.html)
 
@@ -378,6 +385,27 @@ eval: 19876/19877
 eval: 19877/19877
 {'Top_1_Accuracy': 0.7248, 'Top_5_Accuracy': 0.9072}
 ```
+## [Benchmark](#contents)
+Kinetics400 contains ∼246k training videos and 20k validation videos. It is a classification task involving 400 human action categories. We train the model on the training set and test on the validation set. Under the same setting conditions, we compared the accuracy of the models under the three frameworks.
+| <sub>type</sub> | <sub>input frames</sub> | <sub>non-local?</sub> | <sub>top1</sub> | <sub>top5</sub> | <sub>model</sub> |
+| ------------- | ------------- | ------------- | ------------- |------------- | ------------- |
+| <sub>i3d_nlnet_origin_caffe </sub> | 32 | Yes | 74.90 | 91.60 | [`link`](https://dl.fbaipublicfiles.com/video-nonlocal/i3d_nonlocal_32x2_IN_pretrain_400k.pkl)  |
+| <sub>i3d_nlnet_pytorch</sub> | 32 | Yes | 73.92 | 91.59 | [`link`](https://download.openmmlab.com/mmaction/recognition/i3d/i3d_nl_dot_product_r50_32x2x1_100e_kinetics400_rgb/i3d_nl_dot_product_r50_32x2x1_100e_kinetics400_rgb_20200814-7c30d5bb.pth) |
+| <sub>i3d_nlnet_mindspore</sub> | 32 | Yes | 72.48| 90.72 | [`link`](https://zjuteducn-my.sharepoint.com/:u:/g/personal/201906010313_zjut_edu_cn/Ec-B_Hr00QRAs49Vd7Qg4PkBslya1SjAola4hg64tpI6Vg?e=YNm0Ig) |
+
+Here is the accuracy of the model from source paper.
+<div align=center>
+<img src=./src/pic/accuracy.png> 
+
+Figure 2 Accuracy from source paper</div>
+
+## [Visualization result](#contents)
+We have done some visualization of the classification results of the model. The following is a visual sample.
+<div align=center>
+<img src=./src/pic/result.gif> 
+
+Visualization sample</div>
+
 ## [Citation](#contents)
 ```BibTeX
 @article{NonLocal2018,
